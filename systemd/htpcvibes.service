@@ -1,0 +1,12 @@
+[Unit]
+Description=HTPC Vibes (Avalonia)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/apps/HtpcVibes/HtpcVibes
+Restart=on-failure
+Environment=DOTNET_ENVIRONMENT=Production
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=HTPC Vibes
+Exec=/home/YOURUSER/apps/HtpcVibes/HtpcVibes
+X-GNOME-Autostart-enabled=true

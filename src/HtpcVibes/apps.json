@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Steam Big Picture",
+    "subtitle": "Games",
+    "exec": "steam://open/bigpicture",
+    "icon": "assets/icons/steam.png"
+  },
+  {
+    "title": "Netflix",
+    "subtitle": "TV & Film",
+    "exec": "bash -lc \"B=$(command -v chromium-browser || command -v chromium || command -v google-chrome || command -v brave-browser); exec \\\"$B\\\" --app=https://www.netflix.com/browse --kiosk --user-data-dir=$HOME/.config/htpcvibes/chrome-netflix\"",
+    "icon": "assets/icons/netflix.png"
+  },
+  {
+    "title": "Prime Video",
+    "subtitle": "TV & Film",
+    "exec": "bash -lc \"B=$(command -v chromium-browser || command -v chromium || command -v google-chrome || command -v brave-browser); exec \\\"$B\\\" --app=https://www.primevideo.com/ --kiosk --user-data-dir=$HOME/.config/htpcvibes/chrome-prime\"",
+    "icon": "assets/icons/prime.png"
+  }
+]

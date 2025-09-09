@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HtpcVibes.MainView">
+  <Grid RowDefinitions="Auto,*" Padding="48">
+    <TextBlock Text="Launch" FontSize="48" Margin="0,0,0,24"/>
+    <ItemsControl x:Name="Tiles" Items="{Binding Tiles}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <WrapPanel ItemWidth="320" ItemHeight="200"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Button Command="{Binding LaunchCommand}" Margin="16" Padding="0" FocusAdorner="{x:Null}">
+            <Button.Styles>
+              <Style Selector="Button:pointerover /template/ Border, Button:focus /template/ Border">
+                <Setter Property="RenderTransform">
+                  <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                </Setter>
+                <Setter Property="Opacity" Value="1.0"/>
+              </Style>
+              <Style Selector="Button /template/ Border">
+                <Setter Property="Opacity" Value="0.92"/>
+              </Style>
+            </Button.Styles>
+            <Border CornerRadius="20" Padding="24">
+              <StackPanel Spacing="8">
+                <Image Source="{Binding Icon}" Height="64" Stretch="Uniform"/>
+                <TextBlock Text="{Binding Title}" FontSize="28"/>
+                <TextBlock Text="{Binding Subtitle}" Opacity="0.7"/>
+              </StackPanel>
+            </Border>
+          </Button>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </Grid>
+</UserControl>
