@@ -1,51 +1,24 @@
-# HtpcVibes (Ubuntu GNOME + Xbox pad)
+# HtpcVibes v1.1.0
 
-A 10-foot HTPC launcher built with **.NET 9 + Avalonia**.
+HtpcVibes is a 10-foot user interface launcher for your home theatre PC.  It provides
+a simple, couch-friendly dashboard for launching games and media apps,
+with controller navigation support and a small web remote for phones and tablets.
 
-## Features
-- Big-tile launcher with Xbox controller navigation (SDL2)
-- Netflix & Prime Video tiles in Chromium/Chrome kiosk mode (per-app profiles)
-- Hot-reloadable tiles via `apps.json`
-- Optional phone remote on `http://127.0.0.1:7777`
-- Ubuntu GNOME autostart via **systemd user service** or **XDG autostart**
+### Features
 
-## Prereqs (Ubuntu)
-```bash
-sudo apt update
-sudo apt install -y dotnet-sdk-9.0 libsdl2-2.0-0
-sudo apt install -y chromium-browser || sudo apt install -y chromium
-# or install google-chrome-stable via Google's repo
-```
+- **Cross-platform:** Runs on Windows, Linux and macOS via Avalonia.
+- **Controller input:** Uses SDL2 on Linux/macOS and XInput on Windows to handle
+  gamepad navigation.  The D-pad/left stick moves focus, **A** selects and
+  **B** backs out or quits (hold to quit).
+- **Launch anything:** Define your launch targets in a `apps.json` file and
+  they appear as tiles in the UI.  Each tile can specify a separate
+  browser profile for services like Netflix and Prime Video.
+- **Hot-reload:** Changes to `apps.json` are detected at runtime and update
+  the tile grid without restarting the app.
+- **Web remote:** A tiny web server runs on `127.0.0.1:7777` that exposes a
+  minimalist remote control UI; use your phone to send up/down/left/right
+  and A/B commands to the app.
+- **Service files:** Includes example systemd unit and GNOME autostart entry
+  for auto-launching on login.
 
-## Build & run
-```bash
-cd src/HtpcVibes
-dotnet restore
-dotnet run
-```
-
-## Autostart (systemd user service)
-```bash
-dotnet publish -c Release -r linux-x64 --self-contained true -o ~/apps/HtpcVibes
-mkdir -p ~/.config/systemd/user
-cp ../../../systemd/htpcvibes.service ~/.config/systemd/user/
-systemctl --user daemon-reload
-systemctl --user enable --now htpcvibes.service
-```
-
-## GNOME Autostart
-```bash
-mkdir -p ~/.config/autostart
-cp ../..//autostart/htpcvibes.desktop ~/.config/autostart/
-sed -i "s|/home/YOURUSER|$HOME|g" ~/.config/autostart/htpcvibes.desktop
-```
-
-## GitHub
-```bash
-git init
-git add .
-git commit -m "Initial commit: Avalonia HTPC launcher"
-git branch -M main
-git remote add origin <YOUR_REPO_URL>
-git push -u origin main
-```
+See `CHANGELOG.md` for a history of changes.
